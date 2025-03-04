@@ -262,13 +262,13 @@ JOIN
 JOIN 
     silver.dbo.products ON stores.store_id = products.store_id
 JOIN 
-    silver.dbo.categories ON products.category_id = categories.category_id  -- ✅ FIXED
+    silver.dbo.categories ON products.store_id = categories.store_id
 JOIN 
-    silver.dbo.orders ON products.prod_id = orders.prod_id  -- ✅ FIXED
+    silver.dbo.orders ON products.store_id = orders.store_id
 JOIN 
-    silver.dbo.customers ON orders.customer_id = customers.customer_id;  -- ✅ FIXED
+    silver.dbo.customers ON orders.store_id = customers.store_id;
 
--- Verify the inserted data
+
 SELECT * FROM gold.dbo.retail;
 
 use bronze
